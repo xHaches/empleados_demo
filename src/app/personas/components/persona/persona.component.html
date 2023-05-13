@@ -1,0 +1,22 @@
+<form class="form" [formGroup]="personaForm">
+  <mat-form-field class="example-full-width">
+    <mat-label>Nombre</mat-label>
+    <input matInput placeholder="Nombre de la persona" formControlName="nombre">
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <mat-label>Apellidos</mat-label>
+    <input matInput placeholder="Apellidos de la persona" formControlName="apellido">
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Choose a date</mat-label>
+    <input matInput [matDatepicker]="picker" formControlName="fechaNacimiento">
+    <mat-hint>DD/MM/YYYY</mat-hint>
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+  <div class="options">
+    <button mat-raised-button color="primary" (click)="confirm()" [disabled]="personaForm.invalid">Confirmar</button>
+    <button mat-raised-button color="warn" (click)="close()">Cancelar</button>
+  </div>
+</form>

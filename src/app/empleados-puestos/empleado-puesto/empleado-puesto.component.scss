@@ -1,0 +1,13 @@
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.options {
+  display: flex;
+  justify-content: space-around;
+}
+
+.mx {
+  margin: 0 10px;
+}

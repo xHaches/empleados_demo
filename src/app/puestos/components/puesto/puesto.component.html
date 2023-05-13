@@ -1,0 +1,11 @@
+<form class="form" [formGroup]="puestoForm">
+  <mat-form-field class="example-full-width">
+    <mat-label>Nombre</mat-label>
+    <input matInput placeholder="Nombre del puesto" formControlName="nombre">
+  </mat-form-field>
+
+  <div class="options">
+    <button mat-raised-button color="primary" (click)="confirm()" [disabled]="puestoForm.invalid" class="mx">Confirmar</button>
+    <button mat-raised-button color="warn" (click)="close()" class="mx">Cancelar</button>
+  </div>
+</form>

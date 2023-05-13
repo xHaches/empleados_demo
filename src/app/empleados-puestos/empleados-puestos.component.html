@@ -1,0 +1,64 @@
+<div class="container">
+  <h1>Puestos</h1>
+  <div class="header">
+    <mat-form-field appearance="fill">
+      <mat-label>Buscar EmpleadoPuesto</mat-label>
+      <input matInput placeholder="buscar por atributo" [formControl]="searchForm">
+      <mat-icon matSuffix>search</mat-icon>
+      <mat-hint>Nombre, id, apellido...</mat-hint>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" (click)="create()">Agregar registro</button>
+  </div>
+
+  <div class="container-table">
+    <table mat-table [dataSource]="empleadosPuestos" class="mat-elevation-z8">
+
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> Id </th>
+        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="nombreEmpleado">
+        <th mat-header-cell *matHeaderCellDef> Nombre Empleado </th>
+        <td mat-cell *matCellDef="let element"> {{element.persona.nombre}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="apellido">
+        <th mat-header-cell *matHeaderCellDef> Apellidos </th>
+        <td mat-cell *matCellDef="let element"> {{element.persona.apellido}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="fechaNacimiento">
+        <th mat-header-cell *matHeaderCellDef> Fecha de nacimiento </th>
+        <td mat-cell *matCellDef="let element"> {{element.persona.fechaNacimiento | date:'dd/MM/YYYY'}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="nombrePuesto">
+        <th mat-header-cell *matHeaderCellDef> Puesto </th>
+        <td mat-cell *matCellDef="let element"> {{element.puesto.nombre}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="opciones">
+        <th mat-header-cell *matHeaderCellDef> Opciones </th>
+        <td mat-cell *matCellDef="let element">
+            <button mat-icon-button (click)="onEdit(element.id)">
+                <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button (click)="onDelete(element.id)">
+                <mat-icon>delete</mat-icon>
+            </button>
+        </td>
+      </ng-container>
+
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" [attr.colspan]="columns.length">No existen registros</td>
+      </tr>
+
+      <tr mat-header-row *matHeaderRowDef="columns"></tr>
+      <tr mat-row *matRowDef="let row; columns: columns;"></tr>
+    </table>
+  </div>
+
+
+</div>

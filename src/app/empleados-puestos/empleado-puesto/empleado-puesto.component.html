@@ -1,0 +1,24 @@
+<form class="form" [formGroup]="empleadoPuestoForm">
+  <mat-form-field appearance="fill">
+    <mat-label>Empleado</mat-label>
+    <mat-select formControlName="idEmpleado" name="empleado">
+      <mat-option *ngFor="let empleado of empleados" [value]="empleado.id">
+        {{empleado.nombre}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Puesto</mat-label>
+    <mat-select formControlName="idPuesto" name="puesto">
+      <mat-option *ngFor="let puesto of puestos" [value]="puesto.id">
+        {{puesto.nombre}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <div class="options">
+    <button mat-raised-button color="primary" (click)="confirm()" [disabled]="empleadoPuestoForm.invalid" class="mx">Confirmar</button>
+    <button mat-raised-button color="warn" (click)="close()" class="mx">Cancelar</button>
+  </div>
+</form>

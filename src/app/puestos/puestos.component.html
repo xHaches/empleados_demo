@@ -1,0 +1,22 @@
+<div class="container">
+  <h1>Puestos</h1>
+  <div class="header">
+    <mat-form-field appearance="fill">
+      <mat-label>Buscar Puestos</mat-label>
+      <input matInput placeholder="buscar por atributo" [formControl]="searchForm">
+      <mat-icon matSuffix>search</mat-icon>
+      <mat-hint>Nombre, id</mat-hint>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" (click)="create()">Agregar registro</button>
+  </div>
+
+  <app-table
+    [columns]="columns"
+    [items]="puestos"
+    (onDelete)="onDelete($event)"
+    (onEdit)="onEdit($event)"
+  ></app-table>
+
+
+</div>
